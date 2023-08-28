@@ -26,6 +26,9 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         print(f'Message from {message.author}: {message.content}')
 
+class Bot:
+    def __init__(self, commnandName):
+        self.commandName = commnandName
         
 client = MyClient()
 client.run('my token goes here')
