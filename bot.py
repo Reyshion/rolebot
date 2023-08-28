@@ -13,7 +13,9 @@ import os
 from .env import loadEnv
 loadEnv()
 
-bot = discord.Bot()
+intents = discord.Intents.default()
+intents.message_content = True
+client = discord.Client(intents=intents)
 
 TOKEN = TOKEN = os.getenv('DISORD_TOKEN')
 
@@ -21,17 +23,10 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
 
-#<<<<< HEAD
+    async def on_message(self, message):
+        print(f'Message from {message.author}: {message.content}')
 
-#client.run(TOKEN)
-
-class Bot:
-    def __innit__(self, commandName):
-        self.commandName = commandName
-
-async def on_message(self, message):
-    print(f'Message from {message.author}: {message.content}')
-
+        
 client = MyClient()
 client.run('my token goes here')
 
